@@ -13,6 +13,9 @@ Local-only seamless pattern generator. Square tiles (default 2000×2000 px), exp
 ![Exported pattern example](screenshots/example-export.png)
 *Full-resolution PNG export — all five shape types with seamless edge wrapping*
 
+![Flower shape builder](screenshots/flower-builder.png)
+*Flower shape builder — flowers with various numbers of petals in the same pattern*
+
 ## Run
 
 ```

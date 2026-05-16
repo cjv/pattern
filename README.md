@@ -2,6 +2,17 @@
 
 Local-only seamless pattern generator. Square tiles (default 2000×2000 px), exports to PNG ready for Spoonflower or Printful.
 
+## Screenshots
+
+![Pattern Studio empty state](screenshots/empty-state.png)
+*App on first open — clean canvas ready for shapes*
+
+![Pattern Studio with a pattern in progress](screenshots/editor.png)
+*Editor with the Berry Cottagecore palette applied, showing the tile and live 3×3 tiled preview*
+
+![Exported pattern example](screenshots/example-export.png)
+*Full-resolution PNG export — all five shape types with seamless edge wrapping*
+
 ## Run
 
 ```

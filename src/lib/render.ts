@@ -5,6 +5,7 @@ import type {
   RectangleLayer,
   TriangleLayer,
   StarLayer,
+  FlowerLayer,
   ImageLayer,
 } from '../types/pattern';
 
@@ -88,6 +89,8 @@ export function getBoundingRadius(layer: Layer, effectiveScale: number): number 
       // The heart fits in a 2r x 2r box but the bottom point extends to ~r
       // below center; the diagonal to a corner is r*sqrt(2).
       return layer.radius * Math.SQRT2 * effectiveScale;
+    case 'flower':
+      return (Math.max(0, layer.coreRadius) + layer.petalRadius) * effectiveScale;
     case 'image':
       return Math.hypot(layer.width, layer.height) * 0.5 * effectiveScale;
   }
@@ -135,6 +138,26 @@ function pathStar(ctx: CanvasRenderingContext2D, layer: StarLayer) {
   ctx.closePath();
 }
 
+function pathFlower(ctx: CanvasRenderingContext2D, layer: FlowerLayer) {
+  const { petals, petalRadius, coreRadius } = layer;
+  const halfR = petalRadius * 0.5;
+  const narrowR = petalRadius * 0.35;
+  // coreRadius pushes petal centers outward, creating a gap at the center.
+  // At 0 petals meet at the origin; larger values open a ring.
+  const petalDist = Math.max(0, coreRadius) + halfR;
+  ctx.beginPath();
+  for (let i = 0; i < petals; i++) {
+    const angle = (i * 2 * Math.PI) / petals - Math.PI / 2;
+    const cx = Math.cos(angle) * petalDist;
+    const cy = Math.sin(angle) * petalDist;
+    // rotation = angle - π/2 so radiusY (long axis) points radially outward
+    const rotation = angle - Math.PI / 2;
+    // moveTo the ellipse's parametric t=0 point to avoid connecting lines between petals
+    ctx.moveTo(cx + narrowR * Math.cos(rotation), cy + narrowR * Math.sin(rotation));
+    ctx.ellipse(cx, cy, narrowR, halfR, rotation, 0, Math.PI * 2);
+  }
+}
+
 function fillShape(ctx: CanvasRenderingContext2D, layer: Layer) {
   switch (layer.kind) {
     case 'circle':
@@ -154,6 +177,11 @@ function fillShape(ctx: CanvasRenderingContext2D, layer: Layer) {
       break;
     case 'star':
       pathStar(ctx, layer);
+      ctx.fillStyle = layer.fill;
+      ctx.fill();
+      break;
+    case 'flower':
+      pathFlower(ctx, layer);
       ctx.fillStyle = layer.fill;
       ctx.fill();
       break;

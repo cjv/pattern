@@ -100,6 +100,16 @@ export const useStore = create<Store>((set, get) => ({
       case 'heart':
         layer = { ...base, kind: 'heart', radius: size, fill: '#b14444' };
         break;
+      case 'flower':
+        layer = {
+          ...base,
+          kind: 'flower',
+          petals: 6,
+          petalRadius: size,
+          coreRadius: 0,
+          fill: '#e87c9e',
+        };
+        break;
     }
 
     set({ layers: [...layers, layer], selectedId: id });

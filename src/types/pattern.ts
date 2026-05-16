@@ -3,7 +3,7 @@
 // Pattern scale is intentionally NOT stored on layers — it's applied at render time
 // so it can be toggled cleanly without mutating layer data.
 
-export type ShapeKind = 'circle' | 'rectangle' | 'triangle' | 'star' | 'heart';
+export type ShapeKind = 'circle' | 'rectangle' | 'triangle' | 'star' | 'heart' | 'flower';
 export type LayerKind = ShapeKind | 'image';
 
 interface BaseLayer {
@@ -53,6 +53,14 @@ export interface HeartLayer extends BaseLayer {
   fill: string;
 }
 
+export interface FlowerLayer extends BaseLayer {
+  kind: 'flower';
+  petals: number; // min 4
+  petalRadius: number; // distance from center to petal tip
+  coreRadius: number;
+  fill: string;
+}
+
 export interface ImageLayer extends BaseLayer {
   kind: 'image';
   // The HTMLImageElement is held in a side-table so it doesn't get serialized.
@@ -69,6 +77,7 @@ export type Layer =
   | TriangleLayer
   | StarLayer
   | HeartLayer
+  | FlowerLayer
   | ImageLayer;
 
 export interface PatternState {

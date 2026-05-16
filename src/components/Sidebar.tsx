@@ -5,7 +5,7 @@ import { loadImageFile } from '../lib/imageRegistry';
 import { PALETTE_PRESETS } from '../lib/palettes';
 import type { Layer, ShapeKind } from '../types/pattern';
 
-const SHAPE_KINDS: ShapeKind[] = ['circle', 'rectangle', 'triangle', 'star', 'heart'];
+const SHAPE_KINDS: ShapeKind[] = ['circle', 'rectangle', 'triangle', 'star', 'heart', 'flower'];
 
 export function Sidebar() {
   const state = useStore();
@@ -467,6 +467,41 @@ function LayerInspector({ layer }: { layer: Layer }) {
             className="input"
           />
         </Field>
+      )}
+      {layer.kind === 'flower' && (
+        <>
+          <div className="field-row">
+            <Field label="Petals">
+              <input
+                type="number"
+                min={4}
+                max={20}
+                value={layer.petals}
+                onChange={(e) => update({ petals: Number(e.target.value) || 6 })}
+                className="input"
+              />
+            </Field>
+          </div>
+          <div className="field-row">
+            <Field label="Petal R">
+              <input
+                type="number"
+                value={Math.round(layer.petalRadius)}
+                onChange={(e) => update({ petalRadius: Number(e.target.value) })}
+                className="input"
+              />
+            </Field>
+            <Field label="Core R">
+              <input
+                type="number"
+                min={0}
+                value={Math.round(layer.coreRadius)}
+                onChange={(e) => update({ coreRadius: Math.max(0, Number(e.target.value)) })}
+                className="input"
+              />
+            </Field>
+          </div>
+        </>
       )}
       {layer.kind === 'image' && (
         <div className="field-row">

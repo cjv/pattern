@@ -60,7 +60,7 @@ export function Sidebar() {
   return (
     <aside className="sidebar">
       <header className="sidebar-header">
-        <h1 className="sidebar-title">Pattern Studio</h1>
+        <h1 className="sidebar-title">Cedar Pattern Studio</h1>
       </header>
 
       <Section title="Canvas">

@@ -11,7 +11,7 @@ Local-only seamless pattern generator. Square tiles (default 2000×2000 px), exp
 *Editor with the Berry Cottagecore palette, showing the tile and live 3×3 tiled preview*
 
 ![Exported pattern example](screenshots/example-export.png)
-*Full-resolution PNG export — all five shape types with seamless edge wrapping*
+*Full-resolution PNG export — all six shape types with seamless edge wrapping*
 
 ![Flower shape builder](screenshots/flower-builder.png)
 *Flower shape builder — flowers with various numbers of petals in the same pattern*
@@ -35,7 +35,7 @@ Open the URL Vite prints (usually `http://localhost:5173`).
 - Snap to grid — optional grid snapping with configurable grid size (tile px); a dashed grid overlay appears on the canvas when enabled
 
 **Shapes & images**
-- Add circles, rectangles, triangles, stars, and hearts
+- Add circles, rectangles, triangles, stars, hearts, and flowers
 - Upload PNG or SVG images as layers
 - All shapes seamlessly wrap at tile edges
 

@@ -1,13 +1,13 @@
-# Pattern Studio
+# Cedar Pattern Studio
 
 Local-only seamless pattern generator. Square tiles (default 2000×2000 px), exports to PNG ready for square tiles for print on demand. Use the built in basic shapes (with layering!) or pull in your own graphics or clipart. Canvas allows free-form or snap to grid alignment.
 
 ## Screenshots
 
-![Pattern Studio empty state](screenshots/empty-state.png)
+![Cedar Pattern Studio empty state](screenshots/empty-state.png)
 *App on first open — clean canvas ready for shapes*
 
-![Pattern Studio with a pattern in progress](screenshots/editor.png)
+![Cedar Pattern Studio with a pattern in progress](screenshots/editor.png)
 *Editor with the Berry Cottagecore palette, showing the tile and live 3×3 tiled preview*
 
 ![Exported pattern example](screenshots/example-export.png)
